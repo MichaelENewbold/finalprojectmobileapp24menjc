@@ -125,9 +125,6 @@ class ProviderAuth extends ChangeNotifier {
     // DateTime? lastPwChangeTime = _userProfileProvider.dateLastPasswordChange;
     DateTime? lastAuthTime = idTokenResult.authTime;
 
-    // If either time is null, return for now
-    if (lastAuthTime == null) return;
-
     // AppLogger.print("TOKEN - LAST PW CHANGE TIME: ${lastPwChangeTime.toString()}");
 
     AppLogger.print("TOKEN - LAST AUTH TIME: ${lastAuthTime.toString()}");
