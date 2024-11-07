@@ -18,6 +18,24 @@ class ScreenList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Food List')),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color:Colors.tealAccent,
+              ),
+              child: Text('Lists'),
+            ),
+
+            // These two list Tiles will need functions to navigate to the proper data set once we have implemented that side of the program
+            ListTile( 
+              title: const Text('Recipes'), onTap: () {}), 
+            ListTile( 
+              title: const Text('List1'), onTap: () {})
+          ]
+         )
+       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
