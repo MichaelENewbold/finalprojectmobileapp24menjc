@@ -28,7 +28,6 @@ class ScreenList extends StatelessWidget {
               child: Text('Lists'),
             ),
 
-            // These two list Tiles will need functions to navigate to the proper data set once we have implemented that side of the program
             ListTile( 
               title: const Text('Recipes'), onTap: () {}), 
             ListTile( 
@@ -41,7 +40,6 @@ class ScreenList extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              // Will need to update this code to display the proper data set once we have implemented that side of the program
               child: ListView.builder(
                 itemCount: foodItems.length,
                 itemBuilder: (context, index) {
