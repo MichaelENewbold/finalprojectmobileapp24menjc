@@ -34,12 +34,29 @@ class MyApp extends StatelessWidget {
     ],
   );
 
+  final ColorScheme kColorScheme = ColorScheme.fromSeed(
+    seedColor: const Color.fromARGB(255, 96, 59, 181),
+  );
+
+  final ColorScheme kDarkColorScheme = ColorScheme.fromSeed(
+    brightness: Brightness.dark,
+    seedColor: const Color.fromARGB(255, 5, 99, 125),
+  );
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: _router,
       title: 'My App',
-      theme: ThemeData.light(),
+      theme: ThemeData(
+        colorScheme: kColorScheme,
+        useMaterial3: true, // Optional: Enables Material 3 design
+      ),
+      darkTheme: ThemeData(
+        colorScheme: kDarkColorScheme,
+        useMaterial3: true,
+      ),
+      themeMode: ThemeMode.system, // System-based dark/light theme
       debugShowCheckedModeBanner: false,
     );
   }

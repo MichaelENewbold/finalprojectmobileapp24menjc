@@ -14,31 +14,57 @@ class NavigationBarWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ElevatedButton(
-            onPressed: () {
-              context.go(ScreenHome.routeName);
-            },
-            child: const Text('Home'),
-          ),
-          ElevatedButton(
+          ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color.fromARGB(255, 206, 43, 55),
+              minimumSize: const Size(150, 80),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            ),
             onPressed: () {
               context.go(ScreenList.routeName);
             },
-            child: const Text('List'),
+            icon: const Icon(Icons.list, size: 30, color: Colors.white),
+            label: const Text(
+              'List',
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
           ),
-          ElevatedButton(
+          const SizedBox(width: 8), // Smaller gap between buttons
+          ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+              minimumSize: const Size(150, 80),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            ),
             onPressed: () {
               context.go(MealPlannerScreen.routeName);
             },
-            child: const Text('Planner'),
+            icon: const Icon(Icons.calendar_today, size: 30, color: Colors.black),
+            label: const Text(
+              'Planner',
+              style: TextStyle(color: Colors.black, fontSize: 16),
+            ),
           ),
-          ElevatedButton(
+          const SizedBox(width: 8), // Smaller gap between buttons
+          ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color.fromARGB(255, 0, 146, 70),
+              minimumSize: const Size(150, 80),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            ),
             onPressed: () {
               context.go(ChefScreen.routeName);
             },
-            child: const Text('Chef'),
+            icon: const Icon(Icons.lightbulb, size: 30, color: Colors.white),
+            label: const Text(
+              'Chef',
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
           ),
         ],
       ),
