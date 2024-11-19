@@ -18,7 +18,6 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 // App relative file imports
-import '../../main.dart';
 import '../../util/logging/app_logger.dart';
 import '../../providers/provider_auth.dart';
 import '../../util/message_display/snackbar.dart';

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:csc322_starter_app/screens/general/screen_home.dart';
 import 'package:csc322_starter_app/screens/general/screen_list.dart';
 import 'package:csc322_starter_app/screens/general/screen_meal_planner.dart';
 import 'package:csc322_starter_app/screens/general/screen_chef.dart';

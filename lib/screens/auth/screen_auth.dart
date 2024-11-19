@@ -26,7 +26,6 @@ import '../../util/logging/app_logger.dart';
 import '../../providers/provider_auth.dart';
 import '../../models/user_profile.dart';
 import '../../theme/colors.dart';
-import '../../main.dart';
 // import '../../widgets/authentication/cloud_environment_banner_widget.dart';
 // import '../../widgets/account/onboarding/onboarding_button.dart';
 // import '../../providers/device_preferences_provider.dart';

@@ -22,7 +22,6 @@ import '../../util/message_display/snackbar.dart';
 // ignore: unused_import
 import '../../util/logging/app_logger.dart';
 import '../../providers/provider_tts.dart';
-import '../../main.dart';
 
 //////////////////////////////////////////////////////////////////
 // StateFUL widget which manages state. Simply initializes the

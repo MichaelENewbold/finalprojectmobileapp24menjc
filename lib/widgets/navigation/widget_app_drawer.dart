@@ -21,7 +21,6 @@ import '../../providers/provider_user_profile.dart';
 import '../../screens/settings/screen_settings.dart';
 import '../general/widget_profile_avatar.dart';
 import '../../providers/provider_auth.dart';
-import '../../main.dart';
 
 enum BottomNavSelection { HOME_SCREEN, ALTERNATE_SCREEN }
 

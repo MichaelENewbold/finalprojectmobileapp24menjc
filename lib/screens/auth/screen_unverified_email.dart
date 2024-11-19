@@ -19,7 +19,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 // App relative file imports
-import '../../main.dart';
 import '../../util/message_display/snackbar.dart';
 import '../../providers/provider_auth.dart';
 
