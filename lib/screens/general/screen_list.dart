@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:csc322_starter_app/widgets/general/widget_navigation_bar.dart';
 
-class FoodItem {
-  final String name;
-  final String description;
-  bool isChecked; // New property to track checked state
-
-  FoodItem({required this.name, required this.description, this.isChecked = false});
-}
-
 class ScreenList extends StatefulWidget {
   static const String routeName = '/lists';
 
