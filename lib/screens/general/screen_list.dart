@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:csc322_starter_app/widgets/general/widget_navigation_bar.dart';
+import 'package:csc322_starter_app/widgets/general/widget_food_item.dart';
 
 class ScreenList extends StatefulWidget {
   static const String routeName = '/lists';

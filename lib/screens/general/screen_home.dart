@@ -49,7 +49,8 @@ class ScreenHome extends StatelessWidget {
                   Container(
                     width: 100,
                     height: 200,
-                    color: const Color.fromARGB(255, 206, 43, 55),
+                    color: const Color.fromARGB(255, 0, 146, 70),
+                    
                   ),
                   Container(
                     width: 100,
@@ -59,7 +60,7 @@ class ScreenHome extends StatelessWidget {
                   Container(
                     width: 100,
                     height: 200,
-                    color: const Color.fromARGB(255, 0, 146, 70),
+                    color: const Color.fromARGB(255, 206, 43, 55),
                   ),
                 ],
               ),
