@@ -27,7 +27,6 @@ import 'screen_unverified_email.dart';
 import 'screen_profile_setup.dart';
 import 'screen_splash.dart';
 import 'screen_auth.dart';
-import '../../main.dart';
 
 //////////////////////////////////////////////////////////////////////////
 // StateFUL widget which manages state. Simply initializes the

@@ -29,7 +29,6 @@ import '../../util/logging/app_logger.dart';
 import '../../providers/provider_auth.dart';
 import '../../models/user_profile.dart';
 import '../../theme/colors.dart';
-import '../../main.dart';
 
 //////////////////////////////////////////////////////////////////
 // StateFUL widget which manages state. Simply initializes the

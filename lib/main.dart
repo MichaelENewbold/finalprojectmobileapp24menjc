@@ -50,13 +50,13 @@ class MyApp extends StatelessWidget {
       title: 'My App',
       theme: ThemeData(
         colorScheme: kColorScheme,
-        useMaterial3: true, // Optional: Enables Material 3 design
+        useMaterial3: true,
       ),
       darkTheme: ThemeData(
         colorScheme: kDarkColorScheme,
         useMaterial3: true,
       ),
-      themeMode: ThemeMode.system, // System-based dark/light theme
+      themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
     );
   }

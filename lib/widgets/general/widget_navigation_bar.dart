@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:csc322_starter_app/screens/general/screen_home.dart';
 import 'package:csc322_starter_app/screens/general/screen_list.dart';
 import 'package:csc322_starter_app/screens/general/screen_meal_planner.dart';
 import 'package:csc322_starter_app/screens/general/screen_chef.dart';
@@ -18,7 +17,8 @@ class NavigationBarWidget extends StatelessWidget {
         children: [
           ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color.fromARGB(255, 206, 43, 55),
+              backgroundColor: const Color.fromARGB(255, 0, 146, 70),
+              
               minimumSize: const Size(150, 80),
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -32,7 +32,7 @@ class NavigationBarWidget extends StatelessWidget {
               style: TextStyle(color: Colors.white, fontSize: 16),
             ),
           ),
-          const SizedBox(width: 8), // Smaller gap between buttons
+          const SizedBox(width: 8),
           ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromARGB(255, 255, 255, 255),
@@ -49,10 +49,10 @@ class NavigationBarWidget extends StatelessWidget {
               style: TextStyle(color: Colors.black, fontSize: 16),
             ),
           ),
-          const SizedBox(width: 8), // Smaller gap between buttons
+          const SizedBox(width: 8),
           ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color.fromARGB(255, 0, 146, 70),
+              backgroundColor: const Color.fromARGB(255, 206, 43, 55),
               minimumSize: const Size(150, 80),
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),

@@ -19,7 +19,6 @@ import 'package:csc322_starter_app/widgets/general/widget_annotated_loading.dart
 
 // App relative file imports
 import '../../providers/provider_auth.dart';
-import '../../main.dart';
 
 //////////////////////////////////////////////////////////////////
 // StateFUL widget which manages state. Simply initializes the
