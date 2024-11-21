@@ -18,8 +18,7 @@ class NavigationBarWidget extends StatelessWidget {
           ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromARGB(255, 0, 146, 70),
-              
-              minimumSize: const Size(150, 80),
+              minimumSize: const Size(100, 80),
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             ),
@@ -36,7 +35,7 @@ class NavigationBarWidget extends StatelessWidget {
           ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-              minimumSize: const Size(150, 80),
+              minimumSize: const Size(100, 80),
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             ),
@@ -53,7 +52,7 @@ class NavigationBarWidget extends StatelessWidget {
           ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromARGB(255, 206, 43, 55),
-              minimumSize: const Size(150, 80),
+              minimumSize: const Size(100, 80),
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             ),
