@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:csc322_starter_app/widgets/general/widget_food_item.dart';
 import 'package:csc322_starter_app/widgets/general/widget_navigation_bar.dart';
+import 'package:add_2_calendar/add_2_calendar.dart';
 
 class MealPlannerScreen extends StatefulWidget {
   static const String routeName = '/meal_planner';
@@ -46,93 +47,118 @@ class _MealPlannerScreenState extends State<MealPlannerScreen> {
     });
   }
 
+  void _addToCalendar(DateTime date, FoodItem foodItem) {
+    final Event event = Event(
+      title: foodItem.name,
+      description: foodItem.description,
+      location: 'Home',
+      startDate: date,
+      endDate: date.add(Duration(hours: 1)),
+    );
+
+    Add2Calendar.addEvent2Cal(event);
+  }
+
   Future<void> _showAddFoodItemDialog() async {
-    final TextEditingController nameController = TextEditingController();
-    final TextEditingController descriptionController = TextEditingController();
-    DateTime selectedDate = DateTime.now();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
+  DateTime selectedDate = DateTime.now();
 
-    final DateFormat dateFormat = DateFormat('MMM dd, yyyy');
-
-    return showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text('Add New Food Item'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                controller: nameController,
-                decoration: const InputDecoration(labelText: 'Food Name'),
-              ),
-              const SizedBox(height: 12.0),
-              TextField(
-                controller: descriptionController,
-                decoration: const InputDecoration(labelText: 'Description'),
-              ),
-              const SizedBox(height: 24.0),
-              GestureDetector(
-                onTap: () async {
-                  final DateTime? picked = await showDatePicker(
-                    context: context,
-                    initialDate: selectedDate,
-                    firstDate: DateTime(2020),
-                    lastDate: DateTime(2101),
-                  );
-                  if (picked != null && picked != selectedDate) {
-                    setState(() {
-                      selectedDate = picked;
-                    });
-                  }
-                },
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Select Date:',
-                      style: TextStyle(fontSize: 16.0),
-                    ),
-                    const SizedBox(height: 12.0),
-                    Row(
-                      children: [
-                        const Icon(Icons.calendar_today),
-                        const SizedBox(width: 8.0),
-                        Text(
-                          DateFormat('MMM dd, yyyy').format(selectedDate),
-                          style: const TextStyle(fontSize: 16.0),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Cancel'),
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text('Add New Food Item'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              controller: nameController,
+              decoration: const InputDecoration(labelText: 'Food Name'),
             ),
-            TextButton(
-              onPressed: () {
-                final name = nameController.text;
-                final description = descriptionController.text;
-
-                if (name.isNotEmpty && description.isNotEmpty) {
-                  final newFoodItem = FoodItem(name: name, description: description);
-                  _addFoodItem(selectedDate, newFoodItem);
-                  Navigator.pop(context);
+            const SizedBox(height: 12.0),
+            TextField(
+              controller: descriptionController,
+              decoration: const InputDecoration(labelText: 'Description'),
+            ),
+            const SizedBox(height: 24.0),
+            GestureDetector(
+              onTap: () async {
+                final DateTime? picked = await showDatePicker(
+                  context: context,
+                  initialDate: selectedDate,
+                  firstDate: DateTime(2020),
+                  lastDate: DateTime(2101),
+                );
+                if (picked != null && picked != selectedDate) {
+                  setState(() {
+                    selectedDate = picked;
+                  });
                 }
               },
-              child: const Text('Add'),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Select Date:',
+                    style: TextStyle(fontSize: 16.0),
+                  ),
+                  const SizedBox(height: 12.0),
+                  Row(
+                    children: [
+                      const Icon(Icons.calendar_today),
+                      const SizedBox(width: 8.0),
+                      Text(
+                        DateFormat('MMM dd, yyyy').format(selectedDate),
+                        style: const TextStyle(fontSize: 16.0),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
-        );
-      },
-    );
-  }
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () {
+              final name = nameController.text;
+              final description = descriptionController.text;
+
+              if (name.isNotEmpty && description.isNotEmpty) {
+                final newFoodItem = FoodItem(name: name, description: description);
+                _addFoodItem(selectedDate, newFoodItem);
+                Navigator.pop(context);
+              }
+            },
+            child: const Text('Add'),
+          ),
+          TextButton(
+            onPressed: () {
+              final name = nameController.text;
+              final description = descriptionController.text;
+
+              if (name.isNotEmpty && description.isNotEmpty) {
+                final newFoodItem = FoodItem(name: name, description: description);
+                _addFoodItem(selectedDate, newFoodItem);
+                _addToCalendar(selectedDate, newFoodItem); // Add directly to calendar
+                Navigator.pop(context);
+              }
+            },
+            child: const Text('Add 2 both Calendars'),
+          ),
+        ],
+      );
+    },
+  );
+}
+
 
   @override
   Widget build(BuildContext context) {
