@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:csc322_starter_app/widgets/general/widget_food_item.dart';
 import 'package:csc322_starter_app/widgets/general/widget_navigation_bar.dart';
 import 'package:add_2_calendar/add_2_calendar.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class MealPlannerScreen extends StatefulWidget {
   static const String routeName = '/meal_planner';
@@ -47,16 +48,40 @@ class _MealPlannerScreenState extends State<MealPlannerScreen> {
     });
   }
 
+  Future<void> _requestCalendarPermission() async {
+    final status = await Permission.calendarWriteOnly.request();
+    if (status.isGranted) {
+      // Permissions granted, continue with adding the event
+    } else {
+      // Handle permission denial
+    }
+  }
+
   void _addToCalendar(DateTime date, FoodItem foodItem) {
     final Event event = Event(
       title: foodItem.name,
       description: foodItem.description,
       location: 'Home',
-      startDate: date,
-      endDate: date.add(Duration(hours: 1)),
+      startDate: DateTime.now(),
+      endDate: DateTime.now().add(Duration(hours: 1)),
     );
 
     Add2Calendar.addEvent2Cal(event);
+  }
+  
+  Future<void> _addToCalendarWithPermission(DateTime date, FoodItem foodItem) async {
+    final status = await Permission.calendarWriteOnly.request();
+    if (status.isGranted) {
+      _addToCalendar(date, foodItem);
+    } else if (status.isDenied) {
+      // Handle permission denial
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Calendar permission denied')),
+      );
+    } else if (status.isPermanentlyDenied) {
+      // Handle permanent permission denial
+      openAppSettings();
+    }
   }
 
   Future<void> _showAddFoodItemDialog() async {

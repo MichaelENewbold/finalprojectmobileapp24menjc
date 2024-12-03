@@ -1,24 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:csc322_starter_app/screens/general/screen_list.dart';
 import 'package:csc322_starter_app/screens/general/screen_meal_planner.dart';
 import 'package:csc322_starter_app/screens/general/screen_chef.dart';
+import 'package:drop_shadow/drop_shadow.dart';
 
 class NavigationBarWidget extends StatelessWidget {
   const NavigationBarWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Neumorphic(
-      style: NeumorphicStyle(
-        depth: 18,
-        intensity: 30,
-        color: Colors.black,
-        shadowLightColor: Colors.grey.shade300,
-        shadowDarkColor: const Color.fromARGB(255, 0, 0, 0),
-      ),
-      child: Padding(
+    return Padding(
         padding: const EdgeInsets.only(bottom: 10.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -75,7 +67,6 @@ class NavigationBarWidget extends StatelessWidget {
             ),
           ],
         ),
-      )
-    );
+      );
   }
 }

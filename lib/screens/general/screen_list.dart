@@ -1,9 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:csc322_starter_app/widgets/general/widget_navigation_bar.dart';
 import 'package:csc322_starter_app/widgets/general/widget_food_item.dart';
+import 'package:moon_phase_plus/moon_phase_plus.dart';
 
 class ScreenList extends StatefulWidget {
   static const String routeName = '/lists';
@@ -98,7 +98,9 @@ class _ScreenListState extends State<ScreenList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(currentList)),
+      appBar: AppBar(title: Row(children: [Expanded(child: Text(currentList)),
+        MoonWidget(date: DateTime.now(), resolution: 64, size: 32,)
+      ] )),
       drawer: Drawer(
         child: ListView(
           children: [
