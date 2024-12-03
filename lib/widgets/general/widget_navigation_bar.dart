@@ -11,7 +11,11 @@ class NavigationBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.only(bottom: 10.0),
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: DropShadow(
+        blurRadius: 5,
+        offset: const Offset(0, 3),
+        color: Colors.black.withOpacity(0.2),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -19,7 +23,7 @@ class NavigationBarWidget extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 0, 146, 70),
                 minimumSize: const Size(100, 80),
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 16),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               ),
               onPressed: () {
@@ -34,32 +38,32 @@ class NavigationBarWidget extends StatelessWidget {
             const SizedBox(width: 8),
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+                backgroundColor: const Color.fromARGB(255, 254, 254, 254),
                 minimumSize: const Size(100, 80),
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 16),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               ),
               onPressed: () {
                 context.go(MealPlannerScreen.routeName);
               },
-              icon: const Icon(Icons.calendar_today, size: 30, color: Colors.black),
+              icon: const Icon(Icons.restaurant, size: 30, color: Color.fromARGB(255, 0, 0, 0)),
               label: const Text(
-                'Planner',
-                style: TextStyle(color: Colors.black, fontSize: 16),
+                'Meal Planner',
+                style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 16),
               ),
             ),
             const SizedBox(width: 8),
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 206, 43, 55),
+                backgroundColor: const Color.fromARGB(255, 200, 23, 29),
                 minimumSize: const Size(100, 80),
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 16),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               ),
               onPressed: () {
                 context.go(ChefScreen.routeName);
               },
-              icon: const Icon(Icons.lightbulb, size: 30, color: Colors.white),
+              icon: const Icon(Icons.kitchen, size: 30, color: Colors.white),
               label: const Text(
                 'Chef',
                 style: TextStyle(color: Colors.white, fontSize: 16),
@@ -67,6 +71,7 @@ class NavigationBarWidget extends StatelessWidget {
             ),
           ],
         ),
-      );
+      ),
+    );
   }
 }
