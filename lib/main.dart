@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:go_router/go_router.dart';
 import 'screens/general/screen_chef.dart';
 import 'screens/general/screen_home.dart';
 import 'screens/general/screen_list.dart';
 import 'screens/general/screen_meal_planner.dart';
+import 'screens/auth/screen_login_validation.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 

@@ -13,6 +13,7 @@
 import 'dart:async';
 
 // Flutter external package imports
+import 'package:csc322_starter_app/main1.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';

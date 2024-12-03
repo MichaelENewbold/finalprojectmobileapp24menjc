@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:csc322_starter_app/widgets/general/widget_navigation_bar.dart';
 import 'package:csc322_starter_app/widgets/general/widget_food_item.dart';
 
@@ -10,41 +13,63 @@ class ScreenList extends StatefulWidget {
 }
 
 class _ScreenListState extends State<ScreenList> {
-  final Map<String, List<FoodItem>> lists = {'Main List' : [
-    FoodItem(name: 'Pizza', description: 'Cheese and tomato pizza'),
-    FoodItem(name: 'Burger', description: 'Beef burger with lettuce and cheese'),
-    FoodItem(name: 'Sushi', description: 'Fresh sushi with tuna and salmon'),
-    FoodItem(name: 'Pasta', description: 'Spaghetti with marinara sauce'),
-    FoodItem(name: 'Salad', description: 'Mixed greens with vinaigrette dressing'),
-  ], 'Desserts' : [
-    FoodItem(name: 'Ice Cream', description: 'Vanilla ice cream with chocolate syrup'),
-    FoodItem(name: 'Cake', description: 'Chocolate cake with frosting'),
-    FoodItem(name: 'Pie', description: 'Apple pie with whipped cream'),
-    FoodItem(name: 'Cookies', description: 'Chocolate chip cookies'),
-    FoodItem(name: 'Brownies', description: 'Fudge brownies with walnuts'),
-  ],
-  'Favorite Foods':[],
+  final DatabaseReference _database = FirebaseDatabase.instance.reference();
+  Map<String, List<FoodItem>> lists = {
+    'Main List': [
+      FoodItem(name: 'Pizza', description: 'Cheese and tomato pizza'),
+      FoodItem(name: 'Burger', description: 'Beef burger with lettuce and cheese'),
+      FoodItem(name: 'Sushi', description: 'Fresh sushi with tuna and salmon'),
+      FoodItem(name: 'Pasta', description: 'Spaghetti with marinara sauce'),
+      FoodItem(name: 'Salad', description: 'Mixed greens with vinaigrette dressing'),
+    ],
+    'Desserts': [
+      FoodItem(name: 'Ice Cream', description: 'Vanilla ice cream with chocolate syrup'),
+      FoodItem(name: 'Cake', description: 'Chocolate cake with frosting'),
+      FoodItem(name: 'Pie', description: 'Apple pie with whipped cream'),
+      FoodItem(name: 'Cookies', description: 'Chocolate chip cookies'),
+      FoodItem(name: 'Brownies', description: 'Fudge brownies with walnuts'),
+    ],
+    'Favorite Foods': [],
   };
 
   String currentList = 'Main List';
 
-    void _toggleCheck(int index) {
-    setState(() {
-      lists[currentList]![index].isChecked =
-          !lists[currentList]![index].isChecked;
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
+  void _loadData() async {
+    _database.child('lists').once().then((DatabaseEvent event) {
+      DataSnapshot snapshot = event.snapshot;
+      if (snapshot.value != null) {
+        Map<String, dynamic> data = Map<String, dynamic>.from(snapshot.value as Map);
+        setState(() {
+          lists = data.map((key, value) {
+            List<FoodItem> items = List<FoodItem>.from(
+              value.map((item) => FoodItem.fromMap(Map<String, dynamic>.from(item))),
+            );
+            return MapEntry(key, items);
+          });
+        });
+      }
     });
   }
 
-  void _deleteItem(int index) {
-    setState(() {
-      lists[currentList]!.removeAt(index);
+  void _saveData() {
+    Map<String, dynamic> data = lists.map((key, value) {
+      List<Map<String, dynamic>> items = value.map((item) => item.toMap()).toList();
+      return MapEntry(key, items);
     });
+    _database.child('lists').set(data);
   }
 
   void _addItem(String name, String description) {
     setState(() {
       lists[currentList]!.add(FoodItem(name: name, description: description));
     });
+    _saveData();
     Navigator.pop(context); // Close the bottom drawer after adding.
   }
 
@@ -53,6 +78,21 @@ class _ScreenListState extends State<ScreenList> {
       currentList = listName;
     });
     Navigator.pop(context); // Close the drawer.
+  }
+
+  void _toggleCheck(int index) {
+    setState(() {
+      lists[currentList]![index].isChecked =
+          !lists[currentList]![index].isChecked;
+    });
+    _saveData();
+  }
+
+  void _deleteItem(int index) {
+    setState(() {
+      lists[currentList]!.removeAt(index);
+    });
+    _saveData();
   }
 
   @override

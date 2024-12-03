@@ -53,7 +53,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize Firebase with the default options
-  await Firebase.initializeApp(options: NewDefaultFirebaseOptions.currentPlatform, name: 'Csc322');
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform, name: 'Csc322');
 
   // Initialize the app directory
   await UtilFile.init();

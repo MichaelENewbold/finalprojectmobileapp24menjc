@@ -22,6 +22,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 
 // App relative file imports
+import '../../main1.dart';
 import '../../widgets/general/widget_profile_avatar.dart';
 import '../../providers/provider_user_profile.dart';
 import '../../util/message_display/snackbar.dart';
